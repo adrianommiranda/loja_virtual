@@ -16,9 +16,9 @@ public class ImagemProduto implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_imagem_produto")
     private Long id;
 
-    @Column(columnDefinition = "text")
+    @Column(columnDefinition = "text", nullable = false)//obrigatório
     private String imagemOriginal;
-    @Column(columnDefinition = "text")
+    @Column(columnDefinition = "text", nullable = false)//obrigatório
     private String imagemMiniatura;
 
     //Não esquecer de ir na Pessoa e criar a lista

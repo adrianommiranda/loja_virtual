@@ -19,11 +19,22 @@ public class Endereco implements Serializable {
 
     @Column(nullable = false)
     private  String ruaLogradouro;
+
+    @Column(nullable = false)//obrigatório
     private  String cep;
+
+    @Column(nullable = false)//obrigatório
     private  String numero;
+
     private  String complemento;
+
+    @Column(nullable = false)//obrigatório
     private  String bairro;
+
+    @Column(nullable = false)//obrigatório
     private  String uf;
+
+    @Column(nullable = false)//obrigatório
     private  String cidade;
 
     //Não esquecer de ir na Pessoa e criar a lista
@@ -32,6 +43,7 @@ public class Endereco implements Serializable {
     private Pessoa pessoa;
 
     //Enum TipoEndereco - trabalhando com o tipo String
+    @Column(nullable = false)//obrigatório
     @Enumerated(EnumType.STRING)
     private TipoEndereco tipoEndereco;
 

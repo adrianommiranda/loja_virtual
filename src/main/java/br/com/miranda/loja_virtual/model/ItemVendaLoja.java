@@ -18,7 +18,8 @@ public class ItemVendaLoja implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_item_venda_loja")
     private Long id;
 
-    private Double quuantidade;
+    @Column(nullable = false)//obrigatório
+    private Double quantidade;
 
     @ManyToOne(targetEntity = Produto.class)//referente a esta classe
     @JoinColumn(name = "produto_id", nullable = false, foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "produto_fk"))
@@ -37,11 +38,11 @@ public class ItemVendaLoja implements Serializable {
     }
 
     public Double getQuuantidade() {
-        return quuantidade;
+        return quantidade;
     }
 
     public void setQuuantidade(Double quuantidade) {
-        this.quuantidade = quuantidade;
+        this.quantidade = quuantidade;
     }
 
     public Produto getProduto() {

@@ -25,11 +25,21 @@ public class Usuario implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_usuario")
     private Long id;
+
+    @Column(nullable = false)
     private String login;
+
+    @Column(nullable = false)
     private String senha;
 
+    @Column(nullable = false)
     @Temporal(TemporalType.DATE)
     private Date data_atual_senha;
+
+    //Não esquecer de ir na Pessoa e criar a lista
+    @ManyToOne(targetEntity = Pessoa.class)//referente a esta classe
+    @JoinColumn(name = "pessoa_id", nullable = false, foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "pessoa_fk"))
+    private Pessoa pessoa;
 
     /*FetchType.LAZY - para carregar os acessos apenas quando precisar*/
     @OneToMany(fetch = FetchType.LAZY)
@@ -57,6 +67,14 @@ public class Usuario implements UserDetails {
         return this.login;
     }
 
+    public Pessoa getPessoa() {
+        return pessoa;
+    }
+
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
+    }
+
     @Override
     public boolean isAccountNonExpired() {
         //return UserDetails.super.isAccountNonExpired();
@@ -80,4 +98,6 @@ public class Usuario implements UserDetails {
         //return UserDetails.super.isEnabled();
         return true;
     }
+
+
 }

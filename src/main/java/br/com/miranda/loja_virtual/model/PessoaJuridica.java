@@ -20,7 +20,7 @@ public class PessoaJuridica extends  Pessoa{
     @Column(nullable = false)
     private String inscEstadual;
 
-    @Column(nullable = false)
+    //@Column(nullable = false)
     private String inscMunicipal;
 
     @Column(nullable = false)
